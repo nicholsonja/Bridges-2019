@@ -9,10 +9,10 @@ Implementing the algorithm in a language such as C/C++ will improve rendering sp
 In order to run the code, you will need Python 3.6 or 3.7.  You also
 need to install the NumPy and Pillow libraries. The files are
 
-* genImage_01.py : Computes data for a circle where k = 2 and Number of samples is 1,000,000.
-* genImage_02_A.py : Computes data for a circle where k = 1.5 and Number of samples is 1,000,000. The image result seems like it is only half drawn.
-* genImage_02_B.py : Also computes data for a circle where k = 1.5 and Number of samples is 1,000,000. However, two values for k are used, kA = 3 and kB = 2.  For for each point on a line segment.  Allows the entire image to be rendered.
-* genImage_03.py : Most complex example.  Due to the high number of points, a low of computation is required.  However, it is simple computation that can be parallized.  This example demonstrates a parallized approch using Python's multiprocessing module.  Other languages such as C/C++ would like use threading to achieve the same result.  The number of processes is determined by the number of cores on the computer running the code.
+* genImage_01.py : Computes data for a circle where k = 2 and number of samples is 1,000,000.
+* genImage_02_A.py : Computes data for a circle where k = 1.5 and number of samples is 1,000,000. The image result seems like it is only half drawn.
+* genImage_02_B.py : Also computes data for a circle where k = 1.5 and number of samples is 1,000,000. However, two values for k are used, kA = 3 and kB = 2.  Allows the entire image to be rendered.
+* genImage_03.py : Most complex example.  Due to the high number of points, a lot of computation is required.  However, it is simple computation that can be parallized.  This example demonstrates a parallized approch using Python's multiprocessing module.  Other languages such as C/C++ would likely use threading to achieve the same result.  The number of processes is determined by the number of cores on the computer running the code.
 * genImage_04.py : Computes an image using the rose curve.
 * genImage_05.py : Computes an image using the lemniscate curve.
 * genImage_06.py : Computes an image using two curves, a circle and a rose curve.  For each line segment, point A is on the circle and connects to point B on the rose.
