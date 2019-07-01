@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 
 import multiprocessing
-import os
 
-from helper import circle, saveImage
+from helper import circle, saveImage, getImageName
 from math import pi
 from random import uniform
 
@@ -14,7 +13,7 @@ DPI = 100
 def initializeData(imageWidth, imageHeight):
     return [0] * imageHeight * imageWidth
 
-def computeData(processId, imageWidth, imageHeight, numSamples, k):
+def computeData(processId, imageWidth, imageHeight, numSamples, kA, kB):
     data = initializeData(imageWidth, imageHeight)
 
     cx = imageWidth/2
@@ -24,8 +23,8 @@ def computeData(processId, imageWidth, imageHeight, numSamples, k):
     for i in range(numSamples):
         theta = uniform(0, 2 * pi)
         
-        pA_x, pA_y = circle(theta, radius, cx, cy)
-        pB_x, pB_y = circle(k * theta, radius, cx, cy)
+        pA_x, pA_y = circle(kA * theta, radius, cx, cy)
+        pB_x, pB_y = circle(kB * theta, radius, cx, cy)
         
         # pick a random point on the line segment [pA, pB]
         r = uniform(0, 1)
@@ -40,18 +39,21 @@ def computeData(processId, imageWidth, imageHeight, numSamples, k):
     print("Finished process {}".format(processId))
     return data
     
-def runDataCalculations(imageWidth, imageHeight, numSamples, k):
+def runDataCalculations(imageWidth, imageHeight, numSamples, kA, kB):
+    totalNumProcesses = 10
+    numSamplesPerProcess = int(numSamples / totalNumProcesses)
+    
     data = initializeData(imageWidth, imageHeight)
     
     def saveData(remoteData):
         for i in range(len(data)):
             data[i] += remoteData[i]
-    
-    # number of processes depends on os.cpu_count() 
+            
+    # number of running processes depends on os.cpu_count() 
     pool = multiprocessing.Pool() 
-    for i in range(10):
+    for i in range(totalNumProcesses):
         pool.apply_async(computeData,
-                         args=(i, imageWidth, imageHeight, numSamples, k),
+                         args=(i, imageWidth, imageHeight, numSamplesPerProcess, kA, kB),
                          callback = saveData)
     pool.close()
     pool.join()
@@ -59,20 +61,19 @@ def runDataCalculations(imageWidth, imageHeight, numSamples, k):
     return data
 
 def makeImage(height, width, imageName):
-    k = 2
-    numSamples = 1000000
+    kA = 4
+    kB = 7
+    numSamples = 100000000
  
     imageWidth = min(width, height)
     imageHeight = max(width, height)
 
-    data = runDataCalculations(imageWidth, imageHeight, numSamples, k)
+    data = runDataCalculations(imageWidth, imageHeight, numSamples, kA, kB)
         
     saveImage(data, imageName, imageWidth, imageHeight)
     
 if __name__ == "__main__":
-    scriptName = os.path.basename(__file__)
-    fileNum = scriptName[9 : len(scriptName)-3]
-    imageName = 'image_{}.png'.format(fileNum)
+    imageName = getImageName(__file__)
     
     width = IMAGE_WIDTH_IN * DPI
     height = IMAGE_HEIGHT_IN * DPI

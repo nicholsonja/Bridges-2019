@@ -1,9 +1,13 @@
+import os
 import numpy as np
 
 from PIL import Image
 from math import cos, sin
 
 def saveImage(data, imageName, imageWidth, imageHeight):
+    '''
+    Convert and save data to PNG file. 
+    '''
     maxCount = max(data)
     bg = [255, 255, 255]
     fg = [  0,   0, 255]
@@ -20,6 +24,14 @@ def saveImage(data, imageName, imageWidth, imageHeight):
     
     img = Image.fromarray(rgb)
     img.save(imageName)
+    
+def getImageName(sourceScriptName):
+    scriptName = os.path.basename(sourceScriptName)
+    fileNum = scriptName[9 : len(scriptName)-3]
+    imageName = 'image_{}.png'.format(fileNum)
+    return imageName
+
+# Parametric equations
 
 def circle(theta, radius, cx, cy):
     x = cos(theta) * radius + cx

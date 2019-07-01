@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import os
+import re
 
-from helper import circle, saveImage
+from helper import circle, saveImage, getImageName
 from math import pi
 from random import uniform
 
@@ -10,9 +10,8 @@ IMAGE_WIDTH_IN = 5
 IMAGE_HEIGHT_IN = 5
 DPI = 100
 
-def makeImage(height, width, imageName):
+def makeImage(height, width, imageName, numSamples):
     k = 2
-    numSamples = 1000000
  
     imageWidth = min(width, height)
     imageHeight = max(width, height)
@@ -43,10 +42,9 @@ def makeImage(height, width, imageName):
     
 
 if __name__ == "__main__":
-    scriptName = os.path.basename(__file__)
-    fileNum = scriptName[9 : len(scriptName)-3]
-    imageName = 'image_{}.png'.format(fileNum)
+    imageName = getImageName(__file__)
     
-    width = IMAGE_WIDTH_IN * DPI
-    height = IMAGE_HEIGHT_IN * DPI
-    makeImage(height, width, imageName)
+    for numSamples in (1000000, 100000000):
+        width = IMAGE_WIDTH_IN * DPI
+        height = IMAGE_HEIGHT_IN * DPI
+        makeImage(height, width, re.sub("image", f"image_{numSamples}", imageName), numSamples)

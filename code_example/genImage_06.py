@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 
-import os
-
-from helper import lemniscate, circle, saveImage
+from helper import rose, circle, saveImage, getImageName
 from math import pi
 from random import uniform
 
@@ -11,9 +9,9 @@ IMAGE_HEIGHT_IN = 5
 DPI = 100
 
 def makeImage(height, width, imageName):
-    kA = 4
-    kB = 3
-    numSamples = 1000000
+    kA = 1
+    kB = 2
+    numSamples = 100000000
  
     imageWidth = min(width, height)
     imageHeight = max(width, height)
@@ -25,9 +23,10 @@ def makeImage(height, width, imageName):
     radius  = imageWidth/2 * .85
 
     for i in range(numSamples):
-        theta = uniform(0, 2 * pi)
+        # Note: using 10 * pi.  If only 2 * pi, whole image is not drawn
+        theta = uniform(0, 10 * pi)
         
-        pA_x, pA_y = lemniscate(kA * theta, radius * .9, cx, cy)
+        pA_x, pA_y = rose(kA * theta, radius * .9, 1.2, cx, cy)
         pB_x, pB_y = circle(kB * theta, radius, cx, cy)
 
         # pick a random point on the line segment [pA, pB]
@@ -44,9 +43,7 @@ def makeImage(height, width, imageName):
     
 
 if __name__ == "__main__":
-    scriptName = os.path.basename(__file__)
-    fileNum = scriptName[9 : len(scriptName)-3]
-    imageName = 'image_{}.png'.format(fileNum)
+    imageName = getImageName(__file__)
     
     width = IMAGE_WIDTH_IN * DPI
     height = IMAGE_HEIGHT_IN * DPI
