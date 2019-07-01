@@ -10,7 +10,7 @@ In order to run the code, you will need Python 3.6 or 3.7.  You also
 need to install the NumPy and Pillow libraries. The files are
 
 * **genImage_01.py** : Computes data for a circle where k = 2 and number of samples is 1,000,000 and 100,000,000.  The smaller value allows an image to render faster, but the result contains more noise.
-  * k = 2, samples=1,000,000 ![k = 2, samples=1,000,000](image_1000000_01.png )
+  * k = 2, samples=1,000,000 <img src="image_1000000_01.png" alt="sample" style="width:50%" />
   * k = 2, samples=100,000,000 ![k = 2, samples=1000,00,000](image_100000000_01.png )
 * **genImage_02_A.py** : Computes data for a circle where k = 1.5 and number of samples is 1,000,000. The image result seems like it is only half drawn.
 * **genImage_02_B.py** : Also computes data for a circle where k = 1.5 and number of samples is 1,000,000. However, two values for k are used, kA = 3 and kB = 2.  Allows the entire image to be rendered.
