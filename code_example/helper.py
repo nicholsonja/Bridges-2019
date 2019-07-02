@@ -15,7 +15,7 @@ def saveImage(data, imageName, imageWidth, imageHeight, bg = None, fg = None):
     if fg == None:  
         fg = [  0,   0, 255]
     
-    rgb = np.zeros((imageWidth, imageHeight, 3), 'uint8')
+    rgb = np.zeros((imageHeight, imageWidth, 3), 'uint8')
     for y in range(imageHeight):
         for x in range(imageWidth):
             cnt = data[y * imageWidth + x]
