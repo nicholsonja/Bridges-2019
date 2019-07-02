@@ -24,10 +24,7 @@ def makeImage(height, width, imageName):
     
     cx = imageWidth/2
     cy = imageHeight/2
-    drawing_width = imageWidth
-    radius  = drawing_width/2 
-    textRadius = radius * .95
-    radius = radius * .85
+    radius  = imageWidth/2 * .95
     
     # background
     ctx.set_source_rgb(0xfc/255, 0xfc/255, 0xfc/255)
