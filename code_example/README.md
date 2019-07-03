@@ -25,4 +25,4 @@ need to install the NumPy and Pillow libraries. The files are
 * **genImage_06.py** : Computes an image using two curves, a circle and a rose curve.  For each line segment, point A is on the circle and connects to point B on the rose.
   * <img src="image_06.png" alt="sample" width="250" />
 * **helper.py** : helper functions for saving data to a PNG file, and parametric equations for several curves
-  * In these examples the images are all colored the same.  Altering the code in the saveImage() function can be used to change the colors.
+
