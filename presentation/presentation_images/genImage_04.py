@@ -7,12 +7,12 @@ import cairo
 IMAGE_WIDTH_IN = 5
 IMAGE_HEIGHT_IN = 5
 DPI = 200
-STROKE = .25
+STROKE = .5
 
 def makeImage(height, width, imageName):
-    N = 1000
-    kA = 4
-    kB = 5
+    N = 500
+    kA = 7
+    kB = 8
  
     imageWidth = min(width, height)
     imageHeight = max(width, height)
@@ -34,7 +34,7 @@ def makeImage(height, width, imageName):
     
     # lines
     ctx.set_line_width(STROKE)
-    ctx.set_source_rgb(149/255, 27/255, 153/255)
+    ctx.set_source_rgb(1, 0, 0)
     for d in range(N):
         angA = kA * d * 2 * pi / N
         angB = (kB * d) * 2 * pi / N

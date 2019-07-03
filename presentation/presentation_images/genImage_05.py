@@ -9,8 +9,8 @@ IMAGE_HEIGHT_IN = 5
 DPI = 200
 
 def makeImage(height, width, imageName):
-    kA = 4
-    kB = 5
+    kA = 7
+    kB = 8
     numSamples = 100000000
  
     imageWidth = min(width, height)
@@ -39,7 +39,7 @@ def makeImage(height, width, imageName):
         data[j * imageWidth + i] += 1
         
     saveImage(data, imageName, imageWidth, imageHeight,
-              bg=[0xfc, 0xfc, 0xfc], fg=[149, 27, 153])
+              bg=[0xfc, 0xfc, 0xfc], fg=[0, 0, 255])
     
 
 if __name__ == "__main__":

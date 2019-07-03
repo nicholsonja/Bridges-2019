@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 from math import cos, sin
 
-def saveImage(data, imageName, imageWidth, imageHeight, bg = None, fg = None):
+def saveImage(data, imageName, imageWidth, imageHeight, bg = None, fg = None, alphaMultiplier = 10):
     '''
     Convert and save data to PNG file. 
     '''
@@ -19,7 +19,7 @@ def saveImage(data, imageName, imageWidth, imageHeight, bg = None, fg = None):
     for y in range(imageHeight):
         for x in range(imageWidth):
             cnt = data[y * imageWidth + x]
-            alpha = min(cnt/maxCount * 10, 1.0)
+            alpha = min(cnt/maxCount * alphaMultiplier, 1.0)
                 
             rgb[y, x, 0] = int(alpha * fg[0] + (1 - alpha) * bg[0] + .5)
             rgb[y, x, 1] = int(alpha * fg[1] + (1 - alpha) * bg[1] + .5)
@@ -58,3 +58,11 @@ def lemniscate(theta, radius, cx, cy):
     x = (radius * c)/(1 + s * s) + cx
     y = (radius * s * c)/(1 + s * s) + cy
     return (x, y)   
+
+def hypocycloid(theta, radius, a, b, cx, cy):
+    '''
+    Info: http://mathworld.wolfram.com/Hypocycloid.html
+    '''
+    x = ((a-b) * cos(theta) - b * cos((a-b)/b * theta)) * radius + cx
+    y = ((a-b) * sin(theta) + b * sin((a-b)/b * theta)) * radius + cx
+    return (x, y)  
