@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from helper import hypocycloid, saveImage, getImageName
+from helper import hypotrochoid, saveImage, getImageName
 from math import pi
 from random import uniform
 
@@ -9,7 +9,8 @@ IMAGE_HEIGHT_IN = 5
 DPI = 200
 
 def makeImage(height, width, imageName):
-    k = 2
+    kA = 3
+    kB = 2
     numSamples = 100000000
  
     imageWidth = width
@@ -19,14 +20,18 @@ def makeImage(height, width, imageName):
 
     cx = imageWidth/2
     cy = imageHeight/2
-    radius  = imageWidth/2 * .055
+    radius  = imageWidth/2 * .11
+
+    outerRadius = 2
+    innerRadius = 7
+    d = 4
 
     for i in range(numSamples):
         # need to increase range for complete curve
-        theta = uniform(0, 6 * pi)
+        theta = uniform(0, 30 * pi)
         
-        pA_x, pA_y = hypocycloid(theta, radius, 17, 3, cx, cy)
-        pB_x, pB_y = hypocycloid(k * theta, radius, 17, 3, cx, cy)
+        pA_x, pA_y = hypotrochoid(kA * theta, radius, outerRadius, innerRadius, d, cx, cy)
+        pB_x, pB_y = hypotrochoid(kB * theta, radius, outerRadius, innerRadius, d, cx, cy)
         
         # pick a random point on the line segment [pA, pB]
         r = uniform(0, 1)
@@ -39,7 +44,7 @@ def makeImage(height, width, imageName):
         data[j * imageWidth + i] += 1
         
     saveImage(data, imageName, imageWidth, imageHeight,
-              bg=[0xfc, 0xfc, 0xfc], fg=[152, 150, 0], alphaMultiplier=10)
+              bg=[255, 255, 255], fg=[15, 15, 0], alphaMultiplier=15)
     
 
 if __name__ == "__main__":

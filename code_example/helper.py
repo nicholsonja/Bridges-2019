@@ -59,10 +59,25 @@ def lemniscate(theta, radius, cx, cy):
     y = (radius * s * c)/(1 + s * s) + cy
     return (x, y)   
 
-def hypocycloid(theta, radius, a, b, cx, cy):
+def hypocycloid(theta, radius, R, r, cx, cy):
     '''
     Info: http://mathworld.wolfram.com/Hypocycloid.html
+
+    R: outer circle radius
+    r: inner circle radius
     '''
-    x = ((a-b) * cos(theta) - b * cos((a-b)/b * theta)) * radius + cx
-    y = ((a-b) * sin(theta) + b * sin((a-b)/b * theta)) * radius + cx
+    x = ((R-r) * cos(theta) + r * cos((R-r)/r * theta)) * radius + cx
+    y = ((R-r) * sin(theta) - r * sin((R-r)/r * theta)) * radius + cx
+    return (x, y)  
+
+def hypotrochoid(theta, radius, R, r, d, cx, cy):
+    '''
+    Info: http://mathworld.wolfram.com/Hypotrochoid.html
+
+    R: outer circle radius
+    r: inner circle radius
+    d: distance from the center of the interior circle. 
+    '''
+    x = ((R-r) * cos(theta) + d * cos((R-r)/r * theta)) * radius + cx
+    y = ((R-r) * sin(theta) - d * sin((R-r)/r * theta)) * radius + cx
     return (x, y)  
