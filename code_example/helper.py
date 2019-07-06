@@ -4,9 +4,14 @@ import numpy as np
 from PIL import Image
 from math import cos, sin
 
-def saveImage(data, imageName, imageWidth, imageHeight, bg = None, fg = None, alphaMultiplier = 10):
+def saveImage(data, imageName, imageWidth, imageHeight, 
+              bg = None, fg = None, alphaMultiplier = 10):
     '''
     Convert and save data to PNG file. 
+
+    bg : background color. Three item tuple with integers from 0 - 255
+    fg : forground color. Three item tuple with integers from 0 - 255
+    alphaMultiplier : stretches counts so that lower counts can be perceived
     '''
     maxCount = max(data)
     if bg == None:
