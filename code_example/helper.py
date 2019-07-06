@@ -2,7 +2,7 @@ import os
 import numpy as np
 
 from PIL import Image
-from math import cos, sin
+from math import cos, sin, tan, pi
 
 def saveImage(data, imageName, imageWidth, imageHeight, 
               bg = None, fg = None, alphaMultiplier = 10):
@@ -50,8 +50,8 @@ def rose(theta, radius, petalK, cx, cy):
     '''
     Info: http://mathworld.wolfram.com/Rose.html
     '''
-    x = cos(petalK * theta) * cos(theta) * radius + cx;
-    y = cos(petalK * theta) * sin(theta) * radius + cy;
+    x = cos(petalK * theta) * cos(theta) * radius + cx
+    y = cos(petalK * theta) * sin(theta) * radius + cy
     return (x, y)
 
 def lemniscate(theta, radius, cx, cy):
@@ -86,3 +86,36 @@ def hypotrochoid(theta, radius, R, r, d, cx, cy):
     x = ((R-r) * cos(theta) + d * cos((R-r)/r * theta)) * radius + cx
     y = ((R-r) * sin(theta) - d * sin((R-r)/r * theta)) * radius + cx
     return (x, y)  
+
+def square(theta, radius, cx, cy, rotAng = 0):
+    '''
+    One way to do a square with a parametric equation.
+
+    rotAng : radians. Rotates the square
+    '''
+    n = int (theta / (2 * pi))
+    theta = theta - n * 2 * pi
+    if theta < 0:
+        theta += 2 * pi
+
+    if theta >= pi / 4 and theta < 3 * pi / 4:
+        x = cos(theta)/sin(theta)
+        y = 1
+    elif theta >= 3 * pi / 4 and theta < 5 * pi / 4:
+        x = -1
+        y = -tan(theta)
+    elif theta >= 5 * pi / 4 and theta < 7 * pi / 4:
+        x = -cos(theta)/sin(theta)
+        y = -1
+    else:
+        x = 1
+        y = tan(theta)
+
+    x1 = x * radius
+    y1 = y * radius
+
+    x = x1 * cos(rotAng) - y1 * sin(rotAng) +  cx
+    y = y1 * cos(rotAng) + x1 * sin(rotAng) +  cy
+
+    return x, y
+
