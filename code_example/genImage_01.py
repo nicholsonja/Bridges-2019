@@ -44,7 +44,7 @@ def makeImage(height, width, imageName, numSamples):
 if __name__ == "__main__":
     imageName = getImageName(__file__)
     
-    for numSamples in (1000000, 100000000):
+    for numSamples in (100000, 100000000):
         width = IMAGE_WIDTH_IN * DPI
         height = IMAGE_HEIGHT_IN * DPI
         makeImage(height, width, re.sub("image", f"image_{numSamples}", imageName), numSamples)

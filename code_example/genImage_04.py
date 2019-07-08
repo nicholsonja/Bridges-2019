@@ -37,7 +37,8 @@ def makeImage(height, width, imageName):
         
         data[j * imageWidth + i] += 1
         
-    saveImage(data, imageName, imageWidth, imageHeight)
+    saveImage(data, imageName, imageWidth, imageHeight,
+                fg=[128, 0, 64])
     
 
 if __name__ == "__main__":

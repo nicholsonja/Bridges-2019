@@ -70,7 +70,7 @@ def makeImage(height, width, imageName):
 
     data = runDataCalculations(imageWidth, imageHeight, numSamples, kA, kB)
         
-    saveImage(data, imageName, imageWidth, imageHeight)
+    saveImage(data, imageName, imageWidth, imageHeight, fg=[0, 128, 128])
     
 if __name__ == "__main__":
     imageName = getImageName(__file__)
