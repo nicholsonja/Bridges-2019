@@ -2,15 +2,16 @@
 
 These code examples, written in Python,
 demonstrate the basic algorithm described in the paper.
-Due to the amount of computation, Python is a little slow 
-yet allows the code to be simple for the purpose of understanding it.
+The scripts here are not optimized for speed and as a result are slow.
+However, they are simple and should help intereted people to understand the algorithm
+and possible ways to use it.
 Implementing the algorithm in a language such as C/C++ will improve rendering speeds.
 
 In order to run the code, you will need Python 3.6 or 3.7.  You also
 need to install the NumPy and Pillow libraries. The files are
 
 * **genImage_01.py** : Computes data for a circle where k = 2 and number of samples is 1,000,000 and 100,000,000.  The smaller value allows an image to render faster, but the result contains more noise.
-  * k = 2, samples=1,000,000 <br><img src="image_1000000_01.png" alt="sample" width="250" />
+  * k = 2, samples=100,000 <br><img src="image_100000_01.png" alt="sample" width="250" />
   * k = 2, samples=100,000,000 <br><img src="image_100000000_01.png" alt="sample" width="250" />
 * **genImage_02_A.py** : Computes data for a circle where k = 1.5 and number of samples is 1,000,000. The image result seems like it is only half drawn.
   * <img src="image_02_A.png" alt="sample" width="250" />
@@ -26,3 +27,5 @@ need to install the NumPy and Pillow libraries. The files are
   * <img src="image_06.png" alt="sample" width="250" />
 * **helper.py** : helper functions for saving data to a PNG file, and parametric equations for several curves
 
+The scripts are not bullet proof and some combinations of values will cause the code to crash.  Playing with values,
+especially the radii will usually fix most problems.
