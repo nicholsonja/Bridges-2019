@@ -2,8 +2,9 @@
 
 These code examples, written in Python,
 demonstrate the basic algorithm described in the paper.
-Due to the amount of computation, Python is a little slow 
-yet allows the code to be simple for the purpose of understanding it.
+The scripts here are not optimized for speed and as a result are slow.
+However, they are simple and should help intereted people to understand the algorithm
+and possible ways to use it.
 Implementing the algorithm in a language such as C/C++ will improve rendering speeds.
 
 In order to run the code, you will need Python 3.6 or 3.7.  You also
@@ -26,3 +27,5 @@ need to install the NumPy and Pillow libraries. The files are
   * <img src="image_06.png" alt="sample" width="250" />
 * **helper.py** : helper functions for saving data to a PNG file, and parametric equations for several curves
 
+The scripts are not bullet proof and some combinations of values will cause the code to crash.  Playing with values,
+especially the radii will usually fix most problems.
