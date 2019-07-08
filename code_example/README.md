@@ -28,4 +28,4 @@ need to install the NumPy and Pillow libraries. The files are
 * **helper.py** : helper functions for saving data to a PNG file, and parametric equations for several curves
 
 The scripts are not bullet proof and some combinations of values will cause the code to crash.  Playing with values,
-especially the radii will usually fix most problems.
+especially the radii, will usually fix most problems.
