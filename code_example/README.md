@@ -17,7 +17,7 @@ need to install the NumPy and Pillow libraries. The files are
   * <img src="image_02_A.png" alt="sample" width="250" />
 * **genImage_02_B.py** : Also computes data for a circle where k = 1.5 and number of samples is 1,000,000. However, two values for k are used, kA = 3 and kB = 2.  Allows the entire image to be rendered.
   * <img src="image_02_B.png" alt="sample" width="250" />
-* **genImage_03.py** : Most complex example.  Due to the high number of points, a lot of computation is required.  However, it is simple computation that can be parallized.  This example demonstrates a parallized approch using Python's multiprocessing module.  Other languages such as C/C++ would likely use threading to achieve the same result.  The number of processes is determined by the number of CPUs on the computer running the code.
+* **genImage_03.py** : Most complex example.  Due to the high number of points, a lot of computation is required.  However, it is a simple computation that can be parallized.  This example demonstrates a parallized approch using Python's multiprocessing module.  Other languages such as C/C++ would likely use threading to achieve the same result.  The number of processes is determined by the number of CPUs on the computer running the code.
   * kA = 4 and kB = 7. Total number of samples=100,000,000. 10 processes with 10,000,000 samples / process. <br><img src="image_03.png" alt="sample" width="250" />
 * **genImage_04.py** : Computes an image using the rose curve.
   * <img src="image_04.png" alt="sample" width="250" />
