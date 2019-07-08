@@ -10,7 +10,7 @@ Implementing the algorithm in a language such as C/C++ will improve rendering sp
 In order to run the code, you will need Python 3.6 or 3.7.  You also
 need to install the NumPy and Pillow libraries. The files are
 
-* **genImage_01.py** : Computes data for a circle where k = 2 and number of samples is 1,000,000 and 100,000,000.  The smaller value allows an image to render faster, but the result contains more noise.
+* **genImage_01.py** : Computes data for a circle where k = 2 and number of samples is 100,000 and 100,000,000.  The smaller value allows an image to render faster, but the result contains more noise.
   * k = 2, samples=100,000 <br><img src="image_100000_01.png" alt="sample" width="250" />
   * k = 2, samples=100,000,000 <br><img src="image_100000000_01.png" alt="sample" width="250" />
 * **genImage_02_A.py** : Computes data for a circle where k = 1.5 and number of samples is 1,000,000. The image result seems like it is only half drawn.
