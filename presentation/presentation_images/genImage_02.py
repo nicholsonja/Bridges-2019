@@ -27,7 +27,7 @@ def makeImage(height, width, imageName):
     radius  = imageWidth/2 * .95
     
     # background
-    ctx.set_source_rgb(0xfc/255, 0xfc/255, 0xfc/255)
+    ctx.set_source_rgb(1, 1, 1)
     ctx.rectangle(0, 0, imageWidth, imageHeight)
     ctx.fill()
     ctx.stroke()
@@ -35,7 +35,7 @@ def makeImage(height, width, imageName):
     
     # lines
     ctx.set_line_width(STROKE)
-    ctx.set_source_rgb(0xd3/255, 0x26/255, 0xd8/255 )
+    ctx.set_source_rgb(.125, .05, .25)
     for d in range(N):
         ang1 = d * 2 * pi / N
         ang2 = (k * d) * 2 * pi / N
