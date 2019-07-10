@@ -46,12 +46,12 @@ def circle(theta, radius, cx, cy):
     y = sin(theta) * radius + cy
     return (x, y)
 
-def rose(theta, radius, petalK, cx, cy):
+def rose(theta, radius, n, cx, cy):
     '''
     Info: http://mathworld.wolfram.com/Rose.html
     '''
-    x = cos(petalK * theta) * cos(theta) * radius + cx
-    y = cos(petalK * theta) * sin(theta) * radius + cy
+    x = cos(n * theta) * cos(theta) * radius + cx
+    y = cos(n * theta) * sin(theta) * radius + cy
     return (x, y)
 
 def lemniscate(theta, radius, cx, cy):

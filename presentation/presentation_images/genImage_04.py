@@ -27,7 +27,7 @@ def makeImage(height, width, imageName):
     radius  = imageWidth/2 * .95
     
     # background
-    ctx.set_source_rgb(0xfc/255, 0xfc/255, 0xfc/255)
+    ctx.set_source_rgb(1, 1, 1)
     ctx.rectangle(0, 0, imageWidth, imageHeight)
     ctx.fill()
     ctx.stroke()

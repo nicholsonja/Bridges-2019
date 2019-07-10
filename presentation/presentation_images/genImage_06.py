@@ -39,7 +39,7 @@ def makeImage(height, width, imageName):
         data[j * imageWidth + i] += 1
         
     saveImage(data, imageName, imageWidth, imageHeight,
-              bg=[0xfc, 0xfc, 0xfc], fg=[0, 128, 64], alphaMultiplier=18)
+              bg=[255, 255, 255], fg=[0, 128, 64], alphaMultiplier=18)
     
 
 if __name__ == "__main__":
