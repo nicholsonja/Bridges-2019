@@ -2,7 +2,10 @@ import os
 import numpy as np
 
 from PIL import Image
-from math import cos, sin, tan, pi
+from math import cos, sin, tan, pi, sqrt
+
+SINGLE_COLOR = 1
+GRADIENT_COLOR = 2
 
 def saveImage(data, imageName, imageWidth, imageHeight, 
               bg = None, fg = None, alphaMultiplier = 10):
@@ -10,26 +13,58 @@ def saveImage(data, imageName, imageWidth, imageHeight,
     Convert and save data to PNG file. 
 
     bg : background color. Three item tuple with integers from 0 - 255
-    fg : forground color. Three item tuple with integers from 0 - 255
+    fg : forground color. A list with integers from 0 - 255, e.g. [255, 128, 0],
+         which colors the entire shape based on alpha values computed from counts.
+         Or a list of two 3-items lists, e.g. [[255, 0, 0], [0, 0, 255]],
+         which is used to computer a gradient of colors, which is then is 
+         used to color the entire shape based on alpha values computed from counts.
     alphaMultiplier : stretches counts so that lower counts can be perceived
     '''
     maxCount = max(data)
+
+    drawStyle = SINGLE_COLOR
     if bg == None:
         bg = [255, 255, 255]
+
     
     if fg == None:  
         fg = [  0,   0, 255]
+    elif type(fg[0]) in (list, tuple):
+        drawStyle = GRADIENT_COLOR
+        cx = imageWidth / 2
+        cy = imageHeight / 2
+        radius = min(imageWidth, imageHeight)/2
+
     
     rgb = np.zeros((imageHeight, imageWidth, 3), 'uint8')
     for y in range(imageHeight):
         for x in range(imageWidth):
             cnt = data[y * imageWidth + x]
             alpha = min(cnt/maxCount * alphaMultiplier, 1.0)
-                
-            rgb[y, x, 0] = int(alpha * fg[0] + (1 - alpha) * bg[0] + .5)
-            rgb[y, x, 1] = int(alpha * fg[1] + (1 - alpha) * bg[1] + .5)
-            rgb[y, x, 2] = int(alpha * fg[2] + (1 - alpha) * bg[2] + .5)
-    
+               
+            if drawStyle == SINGLE_COLOR:
+                color = fg
+            elif drawStyle == GRADIENT_COLOR:
+                # compute distance from center of bitmap
+                px = x - cx;
+                py = y - cy;
+            
+                px = px / radius;
+                py = py / radius;
+            
+                dist = sqrt(pow(px, 2) + pow(py, 2))
+           
+                # use distance to weight the two colors
+                color = [
+                    int(dist * fg[0][0] + (1 - dist) * fg[1][0] + .5),
+                    int(dist * fg[0][1] + (1 - dist) * fg[1][1] + .5),
+                    int(dist * fg[0][2] + (1 - dist) * fg[1][2] + .5)
+                ]
+
+            rgb[y, x, 0] = int(alpha * color[0] + (1 - alpha) * bg[0] + .5)
+            rgb[y, x, 1] = int(alpha * color[1] + (1 - alpha) * bg[1] + .5)
+            rgb[y, x, 2] = int(alpha * color[2] + (1 - alpha) * bg[2] + .5)
+            
     img = Image.fromarray(rgb)
     img.save(imageName)
     
