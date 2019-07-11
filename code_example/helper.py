@@ -40,7 +40,7 @@ def saveImage(data, imageName, imageWidth, imageHeight,
     for y in range(imageHeight):
         for x in range(imageWidth):
             cnt = data[y * imageWidth + x]
-            alpha = min(cnt/maxCount * alphaMultiplier, 1.0)
+            alpha = min(cnt/(1.33 * maxCount) * alphaMultiplier, 1.0)
                
             if drawStyle == SINGLE_COLOR:
                 color = fg

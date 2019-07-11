@@ -25,9 +25,6 @@ def makeImage(height, width, imageName):
     circRadius = radius * .9
     hypoRadius = radius * .0275
 
-    numSquares = 8
-    squareRadius = radius/2
-
     for i in range(numSamples):
         theta = uniform(0, 2 * pi)
         
@@ -46,7 +43,7 @@ def makeImage(height, width, imageName):
         data[j * imageWidth + i] += 1
         
     saveImage(data, imageName, imageWidth, imageHeight,
-              bg=[255, 255, 255], fg=[[0, 0, 255], [255, 0, 0]], alphaMultiplier=4)
+              bg=[255, 255, 255], fg=[[0, 0, 159], [228, 171, 0]], alphaMultiplier=4)
     
 
 if __name__ == "__main__":
