@@ -11,7 +11,7 @@ DPI = 200
 def makeImage(height, width, imageName):
     kA = 101
     kB = 2
-    numSamples = 100000000
+    numSamples = 1000000000
  
     imageWidth = width
     imageHeight = height
