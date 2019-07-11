@@ -1,5 +1,5 @@
 # Bridges-2019
-Code examples, paper, and slides from Bridges 2019 presentation. Code is written in Python with the additional libraries NumPy, Pillow, and Pycairo.
+Code examples, paper, and slides from Bridges 2019 presentation. Code is written in Python with the additional libraries NumPy, Pillow, and Pycairo.  The directory **code example** has Python code with a short explination.  The **presentation** directory also includes Python code for most of the images in the slides.
 
 This work can be cited as:
 
