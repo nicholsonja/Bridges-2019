@@ -9,7 +9,7 @@ IMAGE_HEIGHT_IN = 5
 DPI = 200
 
 def makeImage(height, width, imageName):
-    kA = 3
+    kA = 5
     kB = 2
     numSamples = 100000000
  
@@ -20,11 +20,11 @@ def makeImage(height, width, imageName):
 
     cx = imageWidth/2
     cy = imageHeight/2
-    radius  = imageWidth/2 * .11
+    radius  = imageWidth/2 * .07
 
-    outerRadius = 2
-    innerRadius = 7
-    d = 4
+    outerRadius = 8
+    innerRadius = 1
+    d = 7
 
     for i in range(numSamples):
         # need to increase range for complete curve
@@ -44,7 +44,7 @@ def makeImage(height, width, imageName):
         data[j * imageWidth + i] += 1
         
     saveImage(data, imageName, imageWidth, imageHeight,
-              bg=[255, 255, 255], fg=[15, 15, 0], alphaMultiplier=15)
+              bg=[255, 255, 255], fg=[15, 15, 0], alphaMultiplier=10)
     
 
 if __name__ == "__main__":

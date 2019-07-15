@@ -23,7 +23,7 @@ def makeImage(height, width, imageName):
     
     cx = imageWidth/2
     cy = imageHeight/2
-    radius  = imageWidth/2 * .12
+    radius  = imageWidth/2 * .07
     
     # background
     ctx.set_source_rgb(1, 1, 1)
@@ -36,9 +36,9 @@ def makeImage(height, width, imageName):
     ctx.set_line_width(STROKE)
     ctx.set_source_rgb(0, 0, 0)
 
-    outerRadius = 2
-    innerRadius = 7
-    d = 3
+    outerRadius = 8
+    innerRadius = 1 
+    d = 7
 
     N = 360
     for i in range(90 * N+1):
