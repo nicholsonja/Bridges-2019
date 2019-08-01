@@ -3,6 +3,8 @@ Code examples, paper, and slides from Bridges 2019 presentation. Code is written
 
 This work can be cited as:
 
-John Nicholson. 2019. Curve Stitching Density Plots.  In *Proceedings of Bridges 2019 : Mathematics, Art, Music, Architecture, Education, Culture*, 16–20 July, 2019, Linz, Austria. 
+Nicholson, John (2019) Curve Stitching Density Plots.  In *Proceedings of Bridges 2019 : Mathematics, Art, Music, Architecture, Education, Culture*, pp. 351-354, 16–20 July, 2019, Linz, Austria. 
 
-Offical site for Bridges 2019: https://bridgesmathart.org/bridges-2019/
+Offical site for Bridges: https://bridgesmathart.org/
+
+Archive and proceedings of Bridges 2019: http://archive.bridgesmathart.org/2019/index.html
